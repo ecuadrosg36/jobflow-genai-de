@@ -1,0 +1,8 @@
+/.venv
+/data/jobflow.db
+/output
+/logs
+__pycache__/
+*.pyc
+.env
+data/cv.pdf

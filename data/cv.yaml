@@ -1,0 +1,297 @@
+cv:
+  name: Enmanuel Cuadros Gomez
+  location: Lima, Peru
+  email: enmanuel.cuadros.ai@gmail.com
+  phone: "+51 935 744 582"
+  website: https://enmacuadroswork.com
+  social_networks:
+    - network: LinkedIn
+      username: ecuadrosg36
+    - network: GitHub
+      username: ecuadrosg36
+  sections:
+    summary:
+      - Ingeniero de Datos/ML con 5+ años construyendo pipelines de extremo a extremo y plataformas analíticas en la nube en Google Cloud, AWS y Azure.
+      - Experiencia en ingestión y procesamiento de eventos y CDR con Kafka, transformación y modelado para reporting de alto rendimiento sobre Oracle, BigQuery, Redshift y Snowflake.
+      - Dominio de Python, Spark, Airflow y Composer para integración, orquestación y automatización, además de Apache Iceberg, Dataflow y dbt para flujos confiables y trazables. Enfocado en escalabilidad, rendimiento, observabilidad, control de calidad y seguridad con IAM para llevar soluciones robustas a producción.
+
+    experience:
+      - company: Independent Consultant
+        position: Senior Data & AI Consultant
+        start_date: 2025-10
+        end_date: present
+        location: Lima, Peru (Remote)
+        highlights:
+          - Diseño e implemento arquitecturas modernas de Data Lake y Data Warehouse en AWS y GCP para centralizar la analítica corporativa.
+          - Desarrollo soluciones de IA Generativa (LLMs/RAG) para automatizar la extracción de información y asistentes virtuales inteligentes.
+          - Construyo dashboards ejecutivos y operativos en Power BI y Tableau, mejorando la visibilidad de KPIs en tiempo real para la toma de decisiones.
+          - Diseño pipelines de Ingeniería de Datos escalables, optimizando costos de nube y asegurando la calidad del dato.
+
+      - company: Indra Peru
+        position: Big Data Engineer
+        start_date: 2024-09
+        end_date: 2025-09
+        location: Lima, Peru
+        highlights:
+          - Reduje el tiempo de ejecución de procesos ETL en un 30% migrando cargas a Databricks con Scala y Spark SQL.
+          - Implementé Quality Gates automáticos con dbt y Python, deteniendo despliegues fallidos en 15 pipelines críticos.
+          - Optimicé el tuning de Spark (partitioning, broadcast joins) en 30 proyectos, estabilizando los SLAs.
+          - Reduje incidentes productivos en un 25% mediante orquestación avanzada en Airflow y alertas automáticas.
+          - Implementé Delta Lake con controles ACID y Time Travel, mejorando la seguridad y recuperación de datos.
+
+      - company: Vooxell Group SAC
+        position: Data Engineer
+        start_date: 2023-09
+        end_date: 2024-09
+        location: Lima, Peru
+        highlights:
+          - Construí pipelines E2E en GCP usando Dataflow, BigQuery y Cloud Composer para analítica en tiempo real.
+          - Diseñé estrategias de particionamiento en BigQuery que redujeron costos y latencia en un 30%.
+          - Consolidé 16 fuentes de datos dispersas en 4 tablas maestras normalizadas para modelos de Vertex AI.
+          - Procesé ~5 millones de registros usando Spark, Presto, Hive y Redshift para soporte estratégico.
+
+      - company: Tenmas SAC
+        position: Data and ML Engineer
+        start_date: 2023-10
+        end_date: 2024-07
+        location: Spain (Remote)
+        highlights:
+          - Planifiqué y ejecuté la arquitectura de Data Lake para soporte financiero y modelos predictivos.
+          - Optimicé consultas en Aurora MySQL reduciendo tiempos de respuesta en 15% para reporting operativo.
+          - Reduje costos de infraestructura cloud en un 50% mediante evaluación y migración a servicios gestionados.
+          - Integré MongoDB para la ingesta eficiente de datos semi-estructurados de alto volumen.
+
+      - company: Neoris Peru SAC
+        position: Data Engineer
+        start_date: 2023-05
+        end_date: 2023-12
+        location: Lima, Peru
+        highlights:
+          - Desarrollé pipelines de Big Data usando Scala y Python; migré procesos ETL hacia Snowflake asegurando estabilidad.
+          - Gestioné clusters de Hadoop/Spark y almacenamiento en HDFS bajo metodología Scrum.
+
+      - company: Indra Peru
+        position: Database Developer
+        start_date: 2022-06
+        end_date: 2023-07
+        location: Lima, Peru
+        highlights:
+          - Estabilicé 15 ETLs en Snowflake/Spark y diseñé Data Marts que mejoraron los tiempos de consulta en un 30%.
+          - Automaticé flujos ETL con Python y SQL Server procesando más de 10 millones de registros mensuales.
+
+      - company: Chain Services TI SAC
+        position: Business Intelligence Consultant
+        start_date: 2022-03
+        end_date: 2022-06
+        location: Lima, Peru
+        highlights:
+          - Lideré migración a AWS Glue y desarrollé ETLs automatizados con Python reduciendo tiempos en 20%.
+          - Integré Databricks y Airflow para validación de calidad de datos y aceleración de insights.
+
+      - company: ManpowerGroup Peru
+        position: Business Intelligence Analyst
+        start_date: 2020-11
+        end_date: 2022-03
+        location: Lima, Peru
+        highlights:
+          - Diseñé dashboards en Power BI conectados a Azure Data Lake y SQL.
+          - Automaticé reportes financieros con Power Automate reduciendo tiempo operativo en un 40%.
+
+    education:
+      - institution: Universidad de los Andes
+        area: Artificial Intelligence
+        degree: Master's Degree
+        start_date: 2026-01
+        end_date: 2027-12
+        location: Colombia
+        highlights:
+          - (En curso) Maestría enfocada en sistemas avanzados de IA y Machine Learning.
+
+      - institution: ESAN University
+        area: Systems Engineering
+        degree: Bachelor's Degree
+        start_date: 2021-01
+        end_date: 2025-12
+        location: Lima, Peru
+        highlights: []
+
+      - institution: National University of San Marcos
+        area: Accounting
+        degree: Bachelor's Degree
+        start_date: 2011-01
+        end_date: 2016-12
+        location: Lima, Peru
+        highlights: []
+
+    certifications:
+      - bullet: Snowflake Data Engineering (Snowflake)
+      - bullet: AWS Certified Data Engineer Associate (Amazon Web Services)
+      - bullet: Microsoft Certified Power BI Data Analyst Associate (Microsoft)
+      - bullet: Professional Data Engineer Certification (Google)
+      - bullet: Nerdearla 2025 Volunteer (Nerdearla)
+      - bullet: Microsoft Certified Fabric Data Engineer Associate (Microsoft)
+      - bullet: Academy Accreditation Generative AI Fundamentals (Databricks)
+      - bullet: Supervised Machine Learning Regression and Classification (DeepLearning.AI)
+
+    skills:
+      - label: Data Engineering
+        details: Airflow, Cloud Composer, dbt, Kafka, Dataflow/Beam, Apache Iceberg, Control-M
+      - label: Big Data
+        details: Apache Spark, PySpark, Scala, Hadoop (HDFS, Hive, HBase), Presto
+      - label: Cloud Platforms
+        details: GCP (BigQuery, Vertex AI), AWS (Redshift, Lambda, Glue, Aurora), Azure, Databricks, Snowflake
+      - label: Databases
+        details: BigQuery, Redshift, Snowflake, Oracle, PostgreSQL, MongoDB, DynamoDB, DB2
+      - label: DevOps & Tools
+        details: Docker, Kubernetes, Terraform, Jenkins, GitHub Actions, JIRA, Confluence
+      - label: Languages
+        details: Spanish (Native), English (Advanced)
+
+design:
+  theme: engineeringclassic
+  page:
+    size: us-letter
+    top_margin: 2cm
+    bottom_margin: 2cm
+    left_margin: 2cm
+    right_margin: 2cm
+    show_page_numbering: false
+    show_last_updated_date: true
+  colors:
+    text: rgb(0, 0, 0)
+    name: rgb(0, 79, 144)
+    connections: rgb(0, 79, 144)
+    section_titles: rgb(0, 79, 144)
+    links: rgb(0, 79, 144)
+    last_updated_date_and_page_numbering: rgb(128, 128, 128)
+  text:
+    font_family: Raleway
+    font_size: 10pt
+    leading: 0.6em
+    alignment: justified
+    date_and_location_column_alignment: right
+  links:
+    underline: false
+    use_external_link_icon: false
+  header:
+    name_font_family: Raleway
+    name_font_size: 30pt
+    name_bold: false
+    small_caps_for_name: false
+    photo_width: 3.5cm
+    vertical_space_between_name_and_connections: 0.7cm
+    vertical_space_between_connections_and_first_section: 0.7cm
+    horizontal_space_between_connections: 0.5cm
+    connections_font_family: Raleway
+    separator_between_connections: ''
+    use_icons_for_connections: true
+    use_urls_as_placeholders_for_connections: false
+    make_connections_links: true
+    alignment: left
+  section_titles:
+    type: with-partial-line
+    font_family: Raleway
+    font_size: 1.4em
+    bold: false
+    small_caps: false
+    line_thickness: 0.5pt
+    vertical_space_above: 0.5cm
+    vertical_space_below: 0.3cm
+  entries:
+    date_and_location_width: 4.15cm
+    left_and_right_margin: 0.2cm
+    horizontal_space_between_columns: 0.1cm
+    vertical_space_between_entries: 1.2em
+    allow_page_break_in_sections: true
+    allow_page_break_in_entries: true
+    short_second_row: false
+    show_time_spans_in: []
+  highlights:
+    bullet: •
+    nested_bullet: '-'
+    top_margin: 0.25cm
+    left_margin: 0cm
+    vertical_space_between_highlights: 0.25cm
+    horizontal_space_between_bullet_and_highlight: 0.5em
+    summary_left_margin: 0cm
+  entry_types:
+    one_line_entry:
+      template: '**LABEL:** DETAILS'
+    education_entry:
+      main_column_first_row_template: |
+        **DEGREE** in **AREA**
+        **INSTITUTION** -- LOCATION
+      degree_column_template: ''
+      degree_column_width: 0cm
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: DATE
+    normal_entry:
+      main_column_first_row_template: '**NAME** -- **LOCATION**'
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: DATE
+    experience_entry:
+      main_column_first_row_template: '**POSITION**, COMPANY -- LOCATION'
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: DATE
+    publication_entry:
+      main_column_first_row_template: '**TITLE**'
+      main_column_second_row_template: |-
+        AUTHORS
+        URL (JOURNAL)
+      main_column_second_row_without_journal_template: |-
+        AUTHORS
+        URL
+      main_column_second_row_without_url_template: |-
+        AUTHORS
+        JOURNAL
+      date_and_location_column_template: DATE
+
+locale:
+  language: en
+  phone_number_format: national
+  page_numbering_template: NAME - Page PAGE_NUMBER of TOTAL_PAGES
+  last_updated_date_template: Last updated in TODAY
+  date_template: MONTH_ABBREVIATION YEAR
+  month: month
+  months: months
+  year: year
+  years: years
+  present: present
+  to: –
+  abbreviations_for_months:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - June
+    - July
+    - Aug
+    - Sept
+    - Oct
+    - Nov
+    - Dec
+  full_names_of_months:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+
+rendercv_settings:
+  date: '2026-01-05'
+  bold_keywords: []
+  sort_entries: none
