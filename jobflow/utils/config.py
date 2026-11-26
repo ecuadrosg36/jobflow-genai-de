@@ -9,7 +9,7 @@ def _sub_env(v):
     if isinstance(v, str):
         def repl(m):
             key, default = m.group(1), m.group(2)
-            return os.getenv(key, default)
+            return os.getenv(key) or default  # empty counts as unset (CI sets missing secrets to "")
         return _env_pattern.sub(repl, v)
     if isinstance(v, dict):
         return {k: _sub_env(val) for k, val in v.items()}

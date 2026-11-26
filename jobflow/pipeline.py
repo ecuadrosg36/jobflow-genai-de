@@ -8,7 +8,7 @@ from jobflow.ingest.jobspy_ingest import ingest
 from jobflow.transform.normalize import normalize
 from jobflow.storage.db import init_db, upsert_jobs, fetch_jobs_to_score, upsert_scores, mark_generated
 from jobflow.rank.score import score_jobs
-from jobflow.generate.pack import generate
+from jobflow.generate.pack import cv_yaml_path, generate
 from jobflow.publish.website import publish_to_website
 
 
@@ -16,7 +16,9 @@ def run_once(config_path: str):
     cfg = load_config(config_path)
     init_db(cfg["storage"]["sqlite_path"])
 
-    cv_text = load_cv_text("data/cv.pdf")
+    cv_pdf = Path("data/cv.pdf")
+    # The PDF is optional (it is git-ignored, so CI never has it); the CV YAML has the same facts.
+    cv_text = load_cv_text(str(cv_pdf)) if cv_pdf.exists() else cv_yaml_path().read_text(encoding="utf-8")
 
     df = ingest(cfg)
     if df is None or df.empty:
@@ -49,7 +51,9 @@ def run_once(config_path: str):
     pd.DataFrame(top).to_csv(outdir / "top_jobs.csv", index=False, encoding="utf-8")
 
     if cfg["llm"].get("enabled", True):
-        generate(top, cv_text, cfg, outdir)
+        # Scoring keeps only short fields; the LLM needs the job description back.
+        descriptions = {j["job_id"]: j.get("description_raw") or "" for j in jobs}
+        generate([{**r, "description_raw": descriptions.get(r["job_id"], "")} for r in top], cv_text, cfg, outdir)
 
     mark_generated(cfg["storage"]["sqlite_path"], [r["job_id"] for r in top])
     

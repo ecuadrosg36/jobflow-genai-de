@@ -1,8 +1,8 @@
 name: Daily JobFlow
 
+# Manual runs only: the schedule failed every day because the repo has no CV PDF or API key secret.
+# To run it, add an LLM_API_KEY secret (and LLM_BASE_URL / LLM_MODEL if not using Groq's defaults).
 on:
-  schedule:
-    - cron: "0 12 * * *" # 07:00 America/Lima ~ 12:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -19,9 +19,9 @@ jobs:
           pip install -r requirements.txt
       - name: Run
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
         run: |
           python -m jobflow.run --once
       - name: Upload output
