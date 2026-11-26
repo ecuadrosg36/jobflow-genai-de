@@ -1,8 +1,7 @@
 cv:
   name: Enmanuel Cuadros Gomez
   location: Lima, Peru
-  email: enmanuel.cuadros.ai@gmail.com
-  phone: "+51 935 744 582"
+  # email and phone are not committed: copy this file to data/cv.local.yaml (git-ignored) and add them there.
   website: https://enmacuadroswork.com
   social_networks:
     - network: LinkedIn
