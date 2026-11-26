@@ -58,7 +58,7 @@ pip install -r requirements.txt
 ```
 
 ### 2) Data Preparation
-- **Master CV**: I have already populated `data/cv.yaml` with your real experience (Tenmas, Neoris, Indra, Vooxell). This is the source of truth.
+- **Master CV**: `data/cv.yaml` is the source of truth. It has no email or phone. To add them, copy it to `data/cv.local.yaml` (git-ignored) and fill them in there; JobFlow uses the local file when it exists.
 - **Matching CV**: The file `data/cv.pdf` is used only for the initial keyword matching score.
 
 ### 3) Configuration (Groq Fast-Path)

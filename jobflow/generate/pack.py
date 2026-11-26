@@ -1,11 +1,23 @@
 import csv
 import json
 import yaml
-import os
+import subprocess
 import shutil
 from pathlib import Path
 from jobflow.llm.client import OpenAICompatClient
 from jobflow.llm.prompts import system_for, resume_user, cover_user, msg_user, update_cv_user
+
+
+def cv_yaml_path(data_dir: Path = Path("data")) -> Path:
+    """Prefer the git-ignored cv.local.yaml, which holds the contact details kept out of the repo."""
+    local = data_dir / "cv.local.yaml"
+    return local if local.exists() else data_dir / "cv.yaml"
+
+
+def render_pdf(yaml_path: Path, out_dir: Path) -> None:
+    # Argument list, no shell: job_id in the paths comes from scraped postings.
+    subprocess.run(["rendercv", "render", str(yaml_path), "--output-folder", str(out_dir)], check=True)
+
 
 def generate(top_rows, cv_text: str, cfg, outdir: Path):
     llm_cfg = cfg["llm"]
@@ -16,10 +28,10 @@ def generate(top_rows, cv_text: str, cfg, outdir: Path):
     )
 
     # 1. Load Base CV YAML
-    cv_yaml_path = Path("data/cv.yaml")
+    cv_path = cv_yaml_path()
     base_cv = {}
-    if cv_yaml_path.exists():
-        base_cv = yaml.safe_load(cv_yaml_path.read_text(encoding="utf-8"))
+    if cv_path.exists():
+        base_cv = yaml.safe_load(cv_path.read_text(encoding="utf-8"))
 
     for r in top_rows:
         lang = "en" if (r.get("language") == "en") else "es"
@@ -78,7 +90,7 @@ def generate(top_rows, cv_text: str, cfg, outdir: Path):
                 # Run RenderCV
                 # Check directly in current venv path or assume it's in path
                 print(f"Generating PDF for Job {job['job_id']}...")
-                os.system(f"rendercv render {tailored_yaml_path} --output-folder {job_dir}")
+                render_pdf(tailored_yaml_path, job_dir)
                 
             except Exception as e:
                 print(f"Error generating RenderCV PDF: {e}")
