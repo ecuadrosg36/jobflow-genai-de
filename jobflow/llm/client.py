@@ -74,5 +74,11 @@ class OpenAICompatClient:
                 else:
                     print(f"❌ API Error: {r.text}")
                     raise e
-        
+
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+                # Network blips should not end the whole daily batch.
+                sleep_time = min(base_delay * (2 ** attempt), 120) + random.uniform(0.5, 3.0)
+                print(f"⚠️ Network error ({type(e).__name__}). Retrying in {sleep_time:.2f}s ({attempt+1}/{max_retries})...")
+                time.sleep(sleep_time)
+
         raise RuntimeError(f"Max retries ({max_retries}) exceeded.")

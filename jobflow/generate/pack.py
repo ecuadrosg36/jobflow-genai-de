@@ -1,8 +1,7 @@
-import csv
+import copy
 import json
 import yaml
 import subprocess
-import shutil
 from pathlib import Path
 from jobflow.llm.client import OpenAICompatClient
 from jobflow.llm.prompts import system_for, resume_user, cover_user, msg_user, update_cv_user
@@ -17,6 +16,27 @@ def cv_yaml_path(data_dir: Path = Path("data")) -> Path:
 def render_pdf(yaml_path: Path, out_dir: Path) -> None:
     # Argument list, no shell: job_id in the paths comes from scraped postings.
     subprocess.run(["rendercv", "render", str(yaml_path), "--output-folder", str(out_dir)], check=True)
+
+
+MAX_SUMMARY_LINES = 6
+MAX_SUMMARY_CHARS = 400
+
+
+def parse_summary(raw: str):
+    """The LLM's tailored summary as a list of short strings, or None if the reply isn't usable.
+
+    The reply is shaped by a scraped job posting, so it is checked before it goes on the CV.
+    """
+    try:
+        data = json.loads(raw.replace("```json", "").replace("```", "").strip())
+    except (json.JSONDecodeError, AttributeError):
+        return None
+    summary = data.get("summary") if isinstance(data, dict) else None
+    if not isinstance(summary, list) or not 1 <= len(summary) <= MAX_SUMMARY_LINES:
+        return None
+    if not all(isinstance(s, str) and 0 < len(s.strip()) <= MAX_SUMMARY_CHARS for s in summary):
+        return None
+    return [s.strip() for s in summary]
 
 
 def generate(top_rows, cv_text: str, cfg, outdir: Path):
@@ -74,14 +94,14 @@ def generate(top_rows, cv_text: str, cfg, outdir: Path):
         if base_cv:
             try:
                 # LLM Update
-                updates_json = client.chat(sys, update_cv_user(yaml.dump(base_cv), job))
-                updates = json.loads(updates_json.replace("```json", "").replace("```", "").strip())
-                
-                # Create tailored YAML
-                tailored_cv = base_cv.copy()
-                if "summary" in updates and "cv" in tailored_cv:
-                   if "sections" in tailored_cv["cv"]:
-                       tailored_cv["cv"]["sections"]["summary"] = updates["summary"]
+                summary = parse_summary(client.chat(sys, update_cv_user(yaml.dump(base_cv), job)))
+                if summary is None:
+                    print(f"Unusable summary from the LLM for Job {job['job_id']}; keeping the base summary.")
+
+                # Deep copy: a shallow copy would write this job's summary into base_cv for the next jobs.
+                tailored_cv = copy.deepcopy(base_cv)
+                if summary and "sections" in tailored_cv.get("cv", {}):
+                    tailored_cv["cv"]["sections"]["summary"] = summary
                 
                 # Write tailored YAML
                 tailored_yaml_path = job_dir / "cv_tailored.yaml"
